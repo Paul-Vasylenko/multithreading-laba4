@@ -14,6 +14,10 @@ public class Folder {
         this.path = path;
     }
 
+    public String getPath() {
+        return path;
+    }
+
     public List<Folder> getSubFolders() {
         return new LinkedList<>(subFolders);
     }
