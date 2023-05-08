@@ -1,25 +1,27 @@
-import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.concurrent.RecursiveTask;
 
-public class DocumentAnalizerTask extends RecursiveTask<ArrayList<Integer>> {
+public class DocumentTask extends RecursiveTask<Set<String>> {
     private final Document document;
-    public DocumentAnalizerTask(Document document) {
+
+    DocumentTask(Document document) {
         super();
         this.document = document;
     }
-
     @Override
-    protected ArrayList<Integer> compute() {
+    protected Set<String> compute() {
         List<String> lines = document.getLines();
-        ArrayList<Integer> lengths = new ArrayList<>();
+        Set<String> result = new HashSet<>();
         for(var line : lines) {
             String[] words = line.trim().split("(\\s|\\p{Punct})+");
 
             for(var word : words) {
-                lengths.add(word.length());
+                result.add(word.toLowerCase());
             }
         }
-        return lengths;
+
+        return result;
     }
 }
