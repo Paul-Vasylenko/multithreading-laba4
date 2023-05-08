@@ -13,7 +13,12 @@ public class Main {
                     INITIAL_BALANCE);
             transferTasks.add(t);
         }
+        var start = System.currentTimeMillis();
 
         ForkJoinTask.invokeAll(transferTasks);
+        var end = System.currentTimeMillis();
+        var time = end - start;
+
+        System.out.println("Time took: " + time);
     }
 }
