@@ -6,10 +6,17 @@ public class Main {
     public static void main(String[] args) throws IOException {
         Folder folder = Folder.fromDirectory(new File("D:\\KPI\\six_semestr\\java\\laba4\\texts"));
 
-        var textAnalyzer = new CommonWordsTask();
-        var result = textAnalyzer.analyze(folder);
+        Set<String> keywords = new HashSet<String>(List.of(
+                "keyword1",
+                "keyword2",
+                "keyword3"
+        ));
+        var keywordsAnalyzer = new KeywordsTask();
+        var result = keywordsAnalyzer.analyze(folder, keywords);
 
-        System.out.println(Arrays.toString(result.toArray()));
+        result.entrySet().forEach(entry -> {
+            System.out.println(entry.getKey() + " " + entry.getValue());
+        });
     }
 }
 

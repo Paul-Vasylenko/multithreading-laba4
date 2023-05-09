@@ -6,7 +6,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class Document {
-    private final String path;
+    public final String path;
     private final List<String> lines;
     public Document(String path) {
         this.path = path;
